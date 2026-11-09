@@ -1,0 +1,59 @@
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+body { background: #f8fafc; color: #1e293b; display: flex; flex-direction: column; min-height: 100vh; }
+
+/* Header con Flexbox (Mobile First) */
+.top-header { background: #0f172a; color: white; padding: 1rem; display: flex; flex-direction: column; gap: 0.8rem; align-items: center; }
+.brand { font-size: 1.4rem; font-weight: bold; color: #38bdf8; }
+.main-nav { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
+.main-nav button { background: #1e293b; color: white; border: 1px solid #334155; padding: 0.45rem 0.8rem; border-radius: 6px; cursor: pointer; }
+.main-nav button:hover { background: #334155; }
+.user-badge { font-size: 0.85rem; background: #0284c7; padding: 0.3rem 0.7rem; border-radius: 12px; }
+
+.main-container { flex: 1; width: 100%; max-width: 1200px; margin: 0 auto; padding: 1rem; }
+.oculto { display: none !important; }
+
+.notificacion { background: #0284c7; color: white; padding: 0.8rem; border-radius: 6px; margin-bottom: 1rem; text-align: center; font-weight: 600; }
+
+/* Hero y barras con Flexbox */
+.hero { background: linear-gradient(135deg, #1e3a8a, #0f172a); color: white; padding: 1.5rem; border-radius: 10px; margin-bottom: 1.5rem; text-align: center; }
+.search-bar, .filtros-bar { display: flex; flex-direction: column; gap: 0.6rem; margin: 1rem 0; }
+input, select { padding: 0.6rem; border: 1px solid #cbd5e1; border-radius: 6px; width: 100%; }
+
+button { cursor: pointer; border: none; border-radius: 6px; padding: 0.6rem 1rem; font-weight: 600; }
+.btn-pri { background: #2563eb; color: white; }
+.btn-sec { background: #059669; color: white; }
+.btn-danger { background: #dc2626 !important; color: white; }
+
+.flex-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 0.8rem 0 1.5rem; }
+.tag-cat { background: #e2e8f0; padding: 0.5rem 1rem; border-radius: 20px; font-weight: 600; cursor: pointer; }
+
+/* Catálogo con CSS Grid */
+.grid-productos { display: grid; grid-template-columns: 1fr; gap: 1.2rem; margin-top: 1rem; }
+.card-prod { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.07); display: flex; flex-direction: column; justify-content: space-between; }
+.card-prod img { width: 100%; height: 170px; object-fit: cover; }
+.card-body { padding: 1rem; display: flex; flex-direction: column; gap: 0.4rem; }
+.precio { font-size: 1.25rem; font-weight: bold; color: #059669; }
+.stock-badge { font-size: 0.85rem; color: #64748b; }
+
+.detalle-box { background: white; padding: 1.5rem; border-radius: 10px; margin-top: 1rem; display: grid; grid-template-columns: 1fr; gap: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+.detalle-box img { width: 100%; max-height: 300px; object-fit: cover; border-radius: 8px; }
+
+.auth-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin: 1rem 0; }
+.card-form { background: white; padding: 1.5rem; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.06); display: flex; flex-direction: column; gap: 0.8rem; }
+.hint { font-size: 0.8rem; color: #64748b; }
+
+.lista-items { display: flex; flex-direction: column; gap: 0.8rem; margin: 1rem 0; }
+.item-row { background: white; padding: 1rem; border-radius: 8px; display: flex; flex-direction: column; gap: 0.6rem; justify-content: space-between; align-items: flex-start; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+.carrito-resumen { background: white; padding: 1.2rem; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; }
+
+.main-footer { background: #0f172a; color: #94a3b8; text-align: center; padding: 1rem; margin-top: 2rem; font-size: 0.9rem; }
+
+/* Media Queries para Pantallas Medianas y Escritorio */
+@media (min-width: 768px) {
+    .top-header { flex-direction: row; justify-content: space-between; padding: 1rem 2rem; }
+    .search-bar, .filtros-bar { flex-direction: row; }
+    .grid-productos { grid-template-columns: repeat(3, 1fr); }
+    .detalle-box { grid-template-columns: 1fr 1fr; }
+    .auth-grid { grid-template-columns: 1fr 1fr; }
+    .item-row { flex-direction: row; align-items: center; }
+}

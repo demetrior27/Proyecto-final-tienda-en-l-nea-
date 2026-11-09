@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Virtual Full Stack</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="top-header">
+        <div class="brand">TiendaVirtual</div>
+        <nav class="main-nav">
+            <button type="button" id="nav-home">Inicio</button>
+            <button type="button" id="nav-catalogo">Catálogo</button>
+            <button type="button" id="nav-carrito">Carrito</button>
+            <button type="button" id="nav-pedidos">Mis Pedidos</button>
+            <button type="button" id="nav-admin" class="oculto">Admin</button>
+            <button type="button" id="nav-auth">Login / Registro</button>
+            <button type="button" id="btn-logout" class="oculto btn-danger">Salir</button>
+        </nav>
+        <div id="user-badge" class="user-badge">Invitado</div>
+    </header>
+
+    <main class="main-container">
+        <p id="notificacion" class="notificacion oculto"></p>
+
+        <!-- A. LANDING PAGE -->
+        <section id="vista-home" class="vista">
+            <div class="hero">
+                <h1>Bienvenido a nuestra Tienda Online</h1>
+                <p>Explora productos seleccionados aleatoriamente de nuestro catálogo</p>
+                <div class="search-bar">
+                    <input type="text" id="home-search-input" placeholder="Buscar productos por nombre o descripción...">
+                    <button type="button" id="home-search-btn" class="btn-pri">Buscar en Catálogo</button>
+                </div>
+            </div>
+            <h2>Categorías Disponibles</h2>
+            <div id="home-categorias" class="flex-tags"></div>
+            <h2>Productos Destacados (Aleatorios)</h2>
+            <div id="home-aleatorios" class="grid-productos"></div>
+        </section>
+
+        <!-- B. CATÁLOGO DE PRODUCTOS -->
+        <section id="vista-catalogo" class="vista oculto">
+            <h2>Catálogo Completo</h2>
+            <div class="filtros-bar">
+                <input type="text" id="cat-search-input" placeholder="Buscar por nombre o descripción...">
+                <select id="cat-filter-select"></select>
+                <button type="button" id="cat-filter-btn" class="btn-pri">Filtrar</button>
+                <button type="button" id="cat-clear-btn" class="btn-sec">Limpiar</button>
+            </div>
+            <div id="catalogo-grid" class="grid-productos"></div>
+        </section>
+
+        <!-- C. DETALLE DEL PRODUCTO -->
+        <section id="vista-detalle" class="vista oculto">
+            <button type="button" id="btn-volver-catalogo" class="btn-sec">← Volver al Catálogo</button>
+            <article id="detalle-contenedor" class="detalle-box"></article>
+        </section>
+
+        <!-- D. AUTENTICACIÓN -->
+        <section id="vista-auth" class="vista oculto">
+            <div class="auth-grid">
+                <form id="form-login" class="card-form">
+                    <h2>Iniciar Sesión</h2>
+                    <input type="email" id="login-email" placeholder="Correo electrónico" required>
+                    <input type="password" id="login-pass" placeholder="Contraseña" required>
+                    <button type="submit" class="btn-pri">Ingresar</button>
+                    <p class="hint">Demo Admin: admin@tienda.com / admin123</p>
+                    <p class="hint">Demo Cliente: cliente@tienda.com / cliente123</p>
+                </form>
+
+                <form id="form-registro" class="card-form">
+                    <h2>Crear Cuenta</h2>
+                    <input type="text" id="reg-nombre" placeholder="Nombre completo" required>
+                    <input type="email" id="reg-email" placeholder="Correo electrónico" required>
+                    <input type="password" id="reg-pass" placeholder="Contraseña" required>
+                    <select id="reg-rol">
+                        <option value="cliente">Rol: Cliente</option>
+                        <option value="admin">Rol: Administrador</option>
+                    </select>
+                    <button type="submit" class="btn-sec">Registrarse</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- E. CARRITO DE COMPRAS -->
+        <section id="vista-carrito" class="vista oculto">
+            <h2>Mi Carrito de Compras</h2>
+            <div id="carrito-lista" class="lista-items"></div>
+            <div class="carrito-resumen">
+                <h3 id="carrito-total">Total: $0.00</h3>
+                <button type="button" id="btn-confirmar-compra" class="btn-pri">Confirmar Compra (Simular Pago)</button>
+            </div>
+        </section>
+
+        <!-- F. MIS PEDIDOS -->
+        <section id="vista-pedidos" class="vista oculto">
+            <h2>Historial de Mis Pedidos</h2>
+            <div id="pedidos-lista" class="lista-items"></div>
+        </section>
+
+        <!-- G. PANEL ADMINISTRADOR -->
+        <section id="vista-admin" class="vista oculto">
+            <h2>Panel de Administración (Solo Admin)</h2>
+            <div class="auth-grid">
+                <form id="form-categoria" class="card-form">
+                    <h3>Crear Categoría</h3>
+                    <input type="text" id="cat-nombre" placeholder="Nombre de categoría" required>
+                    <input type="text" id="cat-desc" placeholder="Descripción" required>
+                    <button type="submit" class="btn-sec">Guardar Categoría</button>
+                </form>
+
+                <form id="form-producto" class="card-form">
+                    <h3>Crear / Actualizar Producto</h3>
+                    <input type="number" id="prod-id" placeholder="ID (vacío para crear nuevo)">
+                    <input type="text" id="prod-nombre" placeholder="Nombre" required>
+                    <input type="text" id="prod-desc" placeholder="Descripción" required>
+                    <input type="number" id="prod-precio" step="0.01" min="0" placeholder="Precio" required>
+                    <input type="number" id="prod-stock" min="0" placeholder="Stock" required>
+                    <input type="text" id="prod-img" value="/Assets/laptop.svg" placeholder="Ruta imagen (/Assets/...)" required>
+                    <select id="prod-cat-select" required></select>
+                    <button type="submit" class="btn-pri">Guardar Producto</button>
+                </form>
+            </div>
+            <h3>Gestión de Pedidos de Clientes</h3>
+            <div id="admin-pedidos-lista" class="lista-items"></div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>Proyecto Final Full Stack - FastAPI + SQLModel + SQLite</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
